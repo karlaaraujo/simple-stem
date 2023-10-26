@@ -18,8 +18,12 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "@jamescoyle/vue-icon": "^0.1.2",
         "@mdi/font": "^7.3.67",
+        "@mdi/js": "^7.3.67",
+        "core-js": "^3.8.3",
         "roboto-fontface": "^0.10.0",
+        "typeface-roboto": "^1.1.13",
         "vite-plugin-vuetify": "^1.0.2",
         "vue-router": "^4.2.5",
         "vuetify": "^3.3.22",
