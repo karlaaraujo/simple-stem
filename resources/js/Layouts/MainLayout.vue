@@ -3,7 +3,7 @@
         <v-main style="height: fit-content;">
             <SimpleStemHeader />
                 <div class="simple-stem-main">
-                    <div class="container" style="width: 100%; background-color: #ECC8AF; ">
+                    <div class="" style="width: 100%; background-color: #ECC8AF; ">
                         <slot></slot> <!-- Inertia will render the page content here -->
                     </div>
                 </div>
