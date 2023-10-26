@@ -40,22 +40,12 @@
                 {{ post.description }}
             </v-card-text>
 
-            <div id="buttons" class="px-5"> 
-                <v-btn 
-                    style="background-color: #292D32; color: white; border-radius: 0; margin-right: 1rem;"
-                    text
-                    @click="OpenArticle(post.id)"
+            <div id="buttons" class="px-5">
+                <Link
+                    :href="route('artigo.ler', {id: post.id})"
                 >
                     Ler mais
-                </v-btn>
-                <v-btn id="share-button"
-                    style="border-color: white; border-radius: 0; margin-left: 1.5rem; color: #292D32;"
-                    text
-                    @click="ShareArticle(post.id)"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 22q-1.25 0-2.125-.875T15 19q0-.175.025-.363t.075-.337l-7.05-4.1q-.425.375-.95.588T6 15q-1.25 0-2.125-.875T3 12q0-1.25.875-2.125T6 9q.575 0 1.1.213t.95.587l7.05-4.1q-.05-.15-.075-.337T15 5q0-1.25.875-2.125T18 2q1.25 0 2.125.875T21 5q0 1.25-.875 2.125T18 8q-.575 0-1.1-.212t-.95-.588L8.9 11.3q.05.15.075.338T9 12q0 .175-.025.363T8.9 12.7l7.05 4.1q.425-.375.95-.587T18 16q1.25 0 2.125.875T21 19q0 1.25-.875 2.125T18 22Z"/></svg>
-                
-                </v-btn>
+                </Link>
             </div>
         </v-card>
         </v-slide-group-item>
@@ -63,6 +53,8 @@
 </v-sheet>
 </template>
 <script setup>
+
+import { Link } from '@inertiajs/vue3';
 
 const posts = [
     {
@@ -143,7 +135,7 @@ const posts = [
   }
   .v-card .v-btn {
     width: 50px;
-    font-size: 0.7em !important; 
+    font-size: 0.7em !important;
     margin: 0 auto;
     padding: 0 0.2rem;
   }

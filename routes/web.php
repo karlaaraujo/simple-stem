@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArtigoController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,13 +18,23 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
+
+
+/*
+ * Essa rota pode ser lida como: na chamada GET para o endpoint 'artigo/{id}',
+ * execute o método lerArtigo do ArtigoController.php
+ *
+ */
+Route::get('/artigo/{id}', [ArtigoController::class, 'lerArtigo'])
+    ->name('artigo.ler');
+
+
+// --------------- Rotas padrão do Laravel -----------------
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
