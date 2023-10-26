@@ -16,6 +16,7 @@ class Artigo extends Model{
         'conteudo',
         'descricao',
         'tempo_leitura_segundos',
+        'imagem_principal',
     ];
 
     protected $casts = [
@@ -41,6 +42,11 @@ class Artigo extends Model{
     public function artigoPreRequisito()
     {
         return $this->belongsTo(Artigo::class, 'artigo_pre_requisito', 'id_artigo');
+    }
+
+    public function getImagemPrincipalAttribute($value)
+    {
+        return 'data:image/jpeg;base64,' . base64_encode($value);
     }
 
 }
