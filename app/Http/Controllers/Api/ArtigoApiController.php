@@ -22,4 +22,16 @@ class ArtigoApiController extends Controller
 
         return response()->json($artigo);
     }
+
+    public function getLastPostedArtigos($limit = 4)
+    {
+        $artigos = Artigo::with('categoria', 'autor', 'nivelHabilidade', 'artigoPreRequisito')
+            ->orderBy('dt_criacao', 'desc')
+            ->take($limit)
+            ->get();
+
+        return response()->json($artigos);
+    }
+
+
 }

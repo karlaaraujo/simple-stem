@@ -65,7 +65,7 @@ const artigo = ref({});
 const isLoading = ref(true);
 
 onMounted(() => {
-    axios.get(`/api/artigo/${props.id_artigo}`)
+    axios.get(`/api/artigo/id/${props.id_artigo}`)
         .then(response => {
             artigo.value = response.data;
         })

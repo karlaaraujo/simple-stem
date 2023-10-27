@@ -3,14 +3,15 @@
 
 </div>
 <v-sheet
-    id="last-posts"
+    id="last-artigos"
     class="mx-auto"
     max-width="90%"
-
     >
+
     <div class="w-full text-h5 pa-4 text-center">
         Últimos Artigos
     </div>
+
     <div class="w-full text-h8 pa-4 text-center">
         Confira os últimos artigos publicados na plataforma
     </div>
@@ -23,31 +24,29 @@
         scroll-per-page
     >
         <v-slide-group-item
-        v-for="post in posts"
-        :key="post.id"
+        v-for="artigo in artigos"
+        :key="artigo.id_artigo"
         class="pa-4"
-
         >
+
         <v-card class="mx-5 pb-3" max-width="250" outlined>
-            <img class="p-5" :src="post.image" height="270" width="265">
-            <v-card-title> {{ post.title }}</v-card-title>
-            <v-card-subtitle
-                class="text-h8"
-            >
-                {{ post.subtitle }}
-            </v-card-subtitle>
+            <img class="p-5" :src="artigo.link_imagem_principal" height="270" width="265">
+
+            <v-card-title> {{ artigo.titulo }}</v-card-title>
+
             <v-card-text class="text-h9" style="height: 150px; overflow: hidden !important;">
-                {{ post.description }}
+                {{ artigo.descricao }}
             </v-card-text>
 
             <div id="buttons" class="px-5">
                 <Link
-                    :href="route('artigo.ler', {id: post.id})"
+                    :href="route('artigo.ler', {id: artigo.id_artigo})"
                 >
                     Ler mais
                 </Link>
             </div>
         </v-card>
+
         </v-slide-group-item>
     </v-slide-group>
 </v-sheet>
@@ -56,42 +55,31 @@
 
 import { Link } from '@inertiajs/vue3';
 
-const posts = [
-    {
-        id: 1,
-        title: 'Saúde mental na pandemia',
-        image: 'https://i.ibb.co/f82wsCd/Image1.png',
-        subtitle: 'Dicas para se manter são durante a pandemia',
-        description: 'Sabemos que não é fácil se manter são durante a pandemia, mas existem algumas dicas que podem te ajudar a se manter são durante esse período.',
-    },
-    {
-        id:2,
-        title: 'A Ciência por trás do COVID-19',
-        image: 'https://i.ibb.co/nQ6SkTM/Image2.png',
-        subtitle: 'Como a ciência está combatendo o COVID-19',
-        description: 'A ciência está trabalhando duro para combater o COVID-19, e nesse artigo vamos falar um pouco sobre como a ciência está trabalhando para combater o COVID-19.',
-    },
-    {
-        id: 3,
-        title: 'Redes neurais na prática',
-        image: 'https://i.ibb.co/9hWn400/card-Image3.png',
-        subtitle: 'Como implementar uma rede neural',
-        description: 'Aprenda a implementar uma rede neural em Python utilizando a biblioteca Keras.',
-    },
-    {
-        id:4,
-        title: 'Trabalho presencial ou remoto?',
-        image: 'https://i.ibb.co/QjPbMw9/card-Image4.png',
-        subtitle: 'Vantagens e desvantagens do trabalho remoto em escritórios de engenharia',
-        description: 'O trabalho remoto é uma realidade que veio para ficar, mas será que ele é realmente vantajoso? Nesse artigo vamos falar um pouco sobre este assunto.',
-    }
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
-];
+const artigos = ref([]);
+
+const isLoading = ref(true);
+
+onMounted(() => {
+    axios.get(`/api/artigo/ultimos`)
+        .then(response => {
+            artigos.value = response.data;
+        })
+        .catch(error => {
+            console.error("Error fetching the artigos data:", error);
+        })
+        .finally(() => {
+            isLoading.value = false;
+        });
+});
+
 
 </script>
 <style>
 
-#last-posts {
+#last-artigos {
     background: none;
     padding: 25px;
 
