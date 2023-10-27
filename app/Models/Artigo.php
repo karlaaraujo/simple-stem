@@ -17,6 +17,7 @@ class Artigo extends Model{
         'descricao',
         'tempo_leitura_segundos',
         'imagem_principal',
+        'link_imagem_principal'
     ];
 
     protected $casts = [
