@@ -26,6 +26,10 @@ Route::get('/artigo/id/{id}', [ArtigoApiController::class, 'getArtigoById']);
 
 Route::get('/artigo/ultimos', [ArtigoApiController::class, 'getLastPostedArtigos']);
 
+Route::get('/artigos/buscar/termo/{termo}', [ArtigoApiController::class, 'getArtigosPorTermo']);
+
+Route::get('/artigos/buscar/subcategoria/{id_subcategoria}', [ArtigoApiController::class, 'getArtigosPorSubcategoria']);
+
 
 /*--------- Categoria -------------*/
 Route::get('/categoria/{id}/getSubcategorias', [CategoriaApiController::class, 'getSubcategorias']);

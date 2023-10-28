@@ -22,6 +22,22 @@ class ArtigoController extends Controller
         ]);
     }
 
+    public function listarArtigosTermo(Request $request): Response
+    {
+
+        return Inertia::render('ListagemArtigos', [
+            'termoPesquisa' =>  $request->route('termo'),
+        ]);
+    }
+
+    public function listarArtigosSubcategoria(Request $request): Response
+    {
+
+        return Inertia::render('ListagemArtigos', [
+            'subcategoria' =>  $request->route('idSubcategoria'),
+        ]);
+    }
+
 
 
 }

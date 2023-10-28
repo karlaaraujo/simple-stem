@@ -16,7 +16,7 @@
                 :key="index"
             >
                 <v-list-item-title>
-                    <a class="link-nav" href="/">{{ subcategoria.nome }}</a>
+                    <a class="link-nav" :href="'/artigos/listar/subcategoria/'+subcategoria.id">{{ subcategoria.nome }}</a>
                 </v-list-item-title>
             </v-list-item>
         </v-list>

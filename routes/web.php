@@ -33,6 +33,12 @@ Route::get('/', function () {
 Route::get('/artigo/{id}', [ArtigoController::class, 'lerArtigo'])
     ->name('artigo.ler');
 
+Route::get('/artigos/listar/termo/{termo}', [ArtigoController::class, 'listarArtigosTermo'])
+    ->name('artigo.listar.termo');
+
+Route::get('/artigos/listar/subcategoria/{idSubcategoria}', [ArtigoController::class, 'listarArtigosSubcategoria'])
+    ->name('artigo.listar.subcategoria');
+
 
 // --------------- Rotas padrão do Laravel -----------------
 

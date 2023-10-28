@@ -11,6 +11,7 @@ class ArtigoApiController extends Controller
     {
         $artigo = Artigo::with(
             'categoria',
+            'subcategoria',
             'autor',
             'nivelHabilidade',
             'artigoPreRequisito'
@@ -25,9 +26,44 @@ class ArtigoApiController extends Controller
 
     public function getLastPostedArtigos($limit = 4)
     {
-        $artigos = Artigo::with('categoria', 'autor', 'nivelHabilidade', 'artigoPreRequisito')
-            ->orderBy('dt_criacao', 'desc')
+        $artigos = Artigo::with(
+            'categoria',
+            'autor',
+            'subcategoria',
+            'nivelHabilidade',
+            'artigoPreRequisito'
+        )->orderBy('dt_criacao', 'desc')
             ->take($limit)
+            ->get();
+
+        return response()->json($artigos);
+    }
+
+    public function getArtigosPorTermo($termo)
+    {
+        $artigos = Artigo::with(
+            'categoria',
+            'autor',
+            'subcategoria',
+            'nivelHabilidade',
+            'artigoPreRequisito'
+        )->where('titulo', 'LIKE', "%{$termo}%")
+            ->orderBy('dt_criacao', 'desc')
+            ->get();
+
+        return response()->json($artigos);
+    }
+
+    public function getArtigosPorSubcategoria($idSubcategoria)
+    {
+        $artigos = Artigo::with(
+            'categoria',
+            'autor',
+            'subcategoria',
+            'nivelHabilidade',
+            'artigoPreRequisito'
+        )->where('fk_subcategoria', $idSubcategoria)
+            ->orderBy('dt_criacao', 'desc')
             ->get();
 
         return response()->json($artigos);

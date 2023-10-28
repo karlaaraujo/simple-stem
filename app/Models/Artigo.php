@@ -30,6 +30,11 @@ class Artigo extends Model{
         return $this->belongsTo(Categoria::class, 'fk_categoria', 'id_categoria');
     }
 
+    public function subcategoria()
+    {
+        return $this->belongsTo(Subcategoria::class, 'fk_subcategoria', 'id');
+    }
+
     public function autor()
     {
         return $this->belongsTo(Autor::class, 'fk_autor', 'id_autor');
