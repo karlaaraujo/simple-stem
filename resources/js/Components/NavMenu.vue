@@ -1,41 +1,63 @@
 <template>
-
-    <v-row style="width: 100%; height: 138px; background-color: #2D4356; margin: 0">
-        <div id="toolbar">
-            <a class="header-logo" href="/">
-              <img width="192" height="49" viewBox="0 0 192 49" fill="none" src="@/Assets/logo_atualizada.svg" alt="logo" />
-            </a>
-            <span>
-              <input type="text" class="search-input" placeholder="Busque artigos, tópicos..."/>
-              <svg-icon class="search-icon mt-n1" type="mdi" :path="path"></svg-icon>
-            </span>
-        </div>
-    </v-row>
-
-    <v-row class="simple-stem-row" style="width: 100%; height: 72px; background-color: #435B66; margin: 0">
-        <div class="simple-stem-nav">
-            <NavMenu siglaCategoria="S" :idCategoria="1" />
-            <NavMenu siglaCategoria="T" :idCategoria="2" />
-            <NavMenu siglaCategoria="E" :idCategoria="3" />
-            <NavMenu siglaCategoria="M" :idCategoria="4" />
-        </div>
-    </v-row>
-
-    <span v-if="isMobile">
-        <ButtonsLoginCadastro />
-    </span>
-
+    <v-menu open-on-hover>
+        <template v-slot:activator="{ props }">
+            <div :id="'menu' + siglaCategoria"
+                 class="stem-nav-hover"
+                 style="cursor: pointer"
+                 v-bind="props"
+            >
+                {{ siglaCategoria }}
+            </div>
+        </template>
+        <v-list id="nav-menu">
+            <v-list-item
+                class="nav-menu-item"
+                v-for="(subcategoria, index) in subcategorias"
+                :key="index"
+            >
+                <v-list-item-title>
+                    <a class="link-nav" href="/">{{ subcategoria.nome }}</a>
+                </v-list-item-title>
+            </v-list-item>
+        </v-list>
+    </v-menu>
 </template>
 
 <script setup>
-import NavMenu from './NavMenu.vue';
-import ButtonsLoginCadastro from './ButtonsLoginCadastro.vue';
+import {onMounted, ref} from 'vue';
+import axios from 'axios';
+
+const props = defineProps({
+    siglaCategoria: String,
+    idCategoria: Number
+});
+
+const subcategorias = ref([]);
+
+const isLoading = ref(true);
+
+onMounted(() => {
+    axios.get(`/api/categoria/${props.idCategoria}/getSubcategorias`)
+        .then(response => {
+            subcategorias.value = response.data;
+        })
+        .catch(error => {
+            console.error("Error fetching the subcategorias data:", error);
+        })
+        .finally(() => {
+            isLoading.value = false;
+        });
+});
+
+
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap');
 
-
+.nav-menu-item{
+    display: inline-block;
+}
 .simple-stem-row {
     display: flex;
     align-items: center;
@@ -101,21 +123,22 @@ svg.search-icon {
 }
 #nav-menu, .v-overlay-container{
     margin-top: .7%;
-    background-color: #737373;
+    /*background-color: #737373;*/
+    background-color: white;
     opacity: 95%;
     border-radius: 0%;
     color: #FFF;
     font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-weight: 300;
-    height: 50vh;
     width: 100vw;
     margin-left: -12px !important;
     cursor: pointer;
+    text-align: center;
 }
 
 .link-nav {
-    color: #FFF;
+    color: black;
     text-decoration: none;
 }
 
