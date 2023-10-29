@@ -1,5 +1,5 @@
 <template>
-  <div id="desktop-btns" v-if="isDesktop">
+  <div id="desktop-btns" class="py-4" v-if="isDesktop">
     <div class="button-container d-flex flex-row mt-12">
       <v-btn id="signup-btn-desktop" class="button-desktop" href="/register" text>cadastre-se</v-btn>
       <h2 class="or-text px-2">ou</h2>
@@ -93,8 +93,6 @@ export default {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 134.77%;
@@ -117,17 +115,12 @@ export default {
 
 .or-text {
   color: #000000;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 18px;
 }
 
 .mensagemCadastro {
   color: #000000;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
 }
 </style>
