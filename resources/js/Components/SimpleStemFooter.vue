@@ -1,5 +1,5 @@
 <template>
-  <v-footer style="display: flex; width: 100%; height: 138px; background-color: #2D4356; margin: 0; flex-direction: column; padding: 20px 0">
+  <v-footer style="display: flex; width: 100%; height: 138px; background-color: #001c35; margin: 0; flex-direction: column; padding: 20px 0">
     <v-row class="flex justify-between w-full text-white">
         <div>
             <a href="/">
@@ -14,7 +14,7 @@
         <div class="mr-8">
             &copy; {{ new Date().getFullYear() }}
         </div>
-        <div> Made with love at IFAL :)</div>
+        <div> Made with love and RAGE at IFAL :)</div>
     </v-row>
   </v-footer>
 </template>
