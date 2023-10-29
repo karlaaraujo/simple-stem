@@ -24,7 +24,7 @@ class ArtigoApiController extends Controller
         return response()->json($artigo);
     }
 
-    public function getLastPostedArtigos($limit = 4)
+    public function getLastPostedArtigos($limit = 5)
     {
         $artigos = Artigo::with(
             'categoria',
