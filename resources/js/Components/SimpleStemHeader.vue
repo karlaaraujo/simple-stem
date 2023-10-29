@@ -1,6 +1,7 @@
 <template>
 
-    <v-row style="width: 100%; height: 138px; background-color: #2D4356; margin: 0">
+    <v-row style="width: 100%; height: 138px; background-color: #001c35; margin: 0">
+        <!-- <v-row style="width: 100%; height: 138px; background-color: #2D4356; margin: 0"></v-row> -->
         <div id="toolbar">
             <a class="header-logo" href="/">
               <img width="192" height="49" viewBox="0 0 192 49" fill="none" src="@/Assets/logo_atualizada.svg" alt="logo" />
@@ -12,7 +13,7 @@
         </div>
     </v-row>
 
-    <v-row class="simple-stem-row" style="width: 100%; height: 72px; background-color: #435B66; margin: 0">
+    <v-row class="simple-stem-row" style="width: 100%; height: 72px; background-color: #003249; margin: 0">
         <div class="simple-stem-nav">
             <NavMenu siglaCategoria="S" :idCategoria="1" />
             <NavMenu siglaCategoria="T" :idCategoria="2" />
@@ -51,12 +52,11 @@ div#toolbar {
     justify-content: space-between;
     width: 100%;
     height: 138px;
-    background-color: #2D4356;
 }
 
 .header-logo
 {
-    margin-left: 8%;
+    margin-left: 7rem;
     margin-top: 30px;
 }
 span {
@@ -64,7 +64,7 @@ span {
     display: inline-block;
 }
 .search-input {
-    margin-right: 44px;
+    margin-right: 7rem;
     padding: 0 8.5% 0 3%;
     width: 370px;
     height: 44px;
@@ -76,21 +76,14 @@ span {
     font-weight: 100;
 }
 
-svg.search-icon {
-    position: absolute;
-    right: 56px;
-    top: 60%;
-    transform: translateY(-50%);
-}
 .simple-stem-nav {
     display: flex;
-    width: 493px;
+    width: 900px;
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
 }
 .stem-nav-hover{
-    font-family: 'Inter', sans-serif;
     font-size: 36px;
     color: #FFF;
     font-weight: 300;
@@ -105,12 +98,10 @@ svg.search-icon {
     opacity: 95%;
     border-radius: 0%;
     color: #FFF;
-    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-weight: 300;
     height: 50vh;
     width: 100vw;
-    margin-left: -12px !important;
     cursor: pointer;
 }
 
@@ -119,7 +110,18 @@ svg.search-icon {
     text-decoration: none;
 }
 
-@media screen and (max-width: 672px){
+@media screen and (max-width: 1024px) {
+    .header-logo {
+        margin-left: 5rem;
+    }
+
+    .search-input {
+        margin-right: 5rem;
+        width: 280px;
+    } 
+}
+
+@media screen and (max-width: 767px){
 
     div#toolbar {
         display: flex;
@@ -160,27 +162,8 @@ svg.search-icon {
         top: 24px;
     }
     .simple-stem-nav {
-        display: none;
-    }
-
-    .simple-stem-row {
-        display: none;
-    }
-
-
-    #nav-menu, .v-overlay-container{
-        margin-top: 0;
-        background-color: #737373;
-        opacity: 95%;
-        border-radius: 0%;
-        color: #FFF;
-        font-family: 'Inter', sans-serif;
-        font-size: 32px;
-        font-weight: 300;
-        height: 50vh;
-        width: 100vw;
-        margin-left: -12px !important;
-        cursor: pointer;
+        width: auto;
+        min-width: 320px;
     }
 
 }
