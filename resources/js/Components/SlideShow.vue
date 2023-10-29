@@ -19,8 +19,8 @@
       </v-carousel>
     </div>
     <div style="margin-top: 1rem;">
-      <h1 style="padding: 1rem 0">{{ slides[currentSlide].title }}</h1>
-      <p>{{ slides[currentSlide].description }}</p>
+      <p class="text-2xl" style="padding: 1rem 0">{{ slides[currentSlide].title }}</p>
+      <p class="text-xl">{{ slides[currentSlide].description }}</p>
     </div>
   </div>
 
@@ -64,25 +64,22 @@ const slides = [
   .carousel-container {
     width: 100%;
     height: fit-content;
-    padding: 3rem .5rem;
+    padding: 3rem 1rem;
   }
 
   .carousel img {
     width: 100%;
     height: 100%;
-    max-height: 320px;
     object-fit: cover;
   }
 
   .v-window.v-window--show-arrows-on-hover.v-theme--light.v-carousel.v-carousel--hide-delimiter-background {
-    height: 320px !important; /* Altere para auto para permitir que o container se ajuste ao conteúdo */
+    height: 300px !important;
 
   }
 
   .v-carousel__controls {
-    height: 95px !important;
+    position: relative;
   }
-
 }
-
 </style>
