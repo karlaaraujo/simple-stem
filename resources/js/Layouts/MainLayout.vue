@@ -17,3 +17,9 @@ import SimpleStemHeader from '@/Components/SimpleStemHeader.vue';
 import SimpleStemFooter from '@/Components/SimpleStemFooter.vue';
 </script>
 
+<style>
+v-main {
+    font-family: 'Sen', sans-serif !important;
+}
+</style>
+
