@@ -58,7 +58,7 @@ const termoPesquisado = ref('');
 
 .search-input {
     padding-right: 2em;
-    border-radius: 15px;
+    border-radius: 10px;
     border: 1px solid #000;
     background: #FFF;
     width: 100%;
